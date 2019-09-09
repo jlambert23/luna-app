@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Platform } from 'react-native';
-import { Button, colors, ThemeProvider } from 'react-native-elements';
+import { colors, ThemeProvider, Header } from 'react-native-elements';
+
+import DogListComponent from './components/DogList';
 
 const theme = {
   colors: {
@@ -8,19 +10,26 @@ const theme = {
       default: colors.platform.android,
     }),
   },
-  Button: {
-    containerStyle: {
-      marginTop: 80,
-      marginBottom: 10,
-    }
-  }
+  Header: {
+    leftComponent: {
+      color: '#fff',
+    },
+    centerComponent: {
+      style: {
+        color: '#fff',
+      },
+    },
+  },
 }
 
 export default function App() {
   return (
     <ThemeProvider theme = {theme}>
-      <Button title="Hello"/>
-      <Button title="World!" titleStyle={{ color: 'pink' }} />
+      <Header 
+        leftComponent={{ icon: 'menu' }}
+        centerComponent={{ text: 'Luna' }}
+      />
+      <DogListComponent />
     </ThemeProvider>
   );
 }
