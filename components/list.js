@@ -13,7 +13,7 @@ const list = [
   },
 ]
 
-export default class DogList extends Component {
+export default class ListComponent extends Component {
   render() {
     return (
       <View>
@@ -24,6 +24,7 @@ export default class DogList extends Component {
           title={l.name}
           subtitle={l.last_poop.toString()}
           bottomDivider
+          onPress={() => this.props.navigation.navigate('Details')}
         />
        ))
       }
