@@ -6,14 +6,18 @@ import ListComponent from './list';
 
 
 export default class Home extends React.Component {
+  static navigationOptions = {
+    title: 'Luna',
+  };
+
   render() {
     return (
       <View>
-        <Header 
+        {/* <Header 
           leftComponent={{ icon: 'menu' }}
           centerComponent={{ text: 'Luna' }}
           rightComponent={{ icon: 'add' }}
-        />
+        /> */}
         <ListComponent navigation={this.props.navigation}/>
       </View>
     );
