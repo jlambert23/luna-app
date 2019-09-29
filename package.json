@@ -21,7 +21,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
-    "babel-preset-expo": "^6.0.0"
+    "babel-preset-expo": "^6.0.0",
+  "standard": {
+    "parser": "babel-eslint"
   },
   "private": true
 }

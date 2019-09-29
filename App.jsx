@@ -3,10 +3,9 @@ import { ThemeProvider } from 'react-native-elements';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import HomeScreen from './components/home';
-import DetailsScreen from './components/details';
+import HomeScreen from './components/Home';
+import DetailsScreen from './components/PetDetail';
 import Theme from './style/theme';
-
 
 const AppNavigator = createStackNavigator(
   {
