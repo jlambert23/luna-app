@@ -2,31 +2,31 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { ListItem } from 'react-native-elements'
 
-const list = [
-  {
-    id: 1,
-    name: 'Luna',
-    last_poop: new Date(),
-  },
-  {
-    id: 2,
-    name: 'Koko',
-    last_poop: new Date(),
-  },
-]
+import { getPets } from '../../services/pets'
 
-export default class ListComponent extends Component {
+export default class PetList extends Component {
+  constructor() {
+    super();
+    this.state = { pets: [] }
+  }
+
+  componentDidMount() {
+    getPets()
+      .then(pets => { this.setState({ pets: pets }); })
+      .catch(e => console.error(e));
+  }
+
   render() {
     return (
       <View>
       {
-       list.map((l) => (
+       this.state.pets.map((pet) => (
         <ListItem 
-          key={l.id}
-          title={l.name}
-          subtitle={l.last_poop.toString()}
+          key={pet.id}
+          title={pet.name}
+          subtitle={pet.last_poop.toString()}
           bottomDivider
-          onPress={() => this.props.navigation.navigate('Details', { pet: l })}
+          onPress={() => this.props.navigation.navigate('Details', { pet: pet })}
         />
        ))
       }

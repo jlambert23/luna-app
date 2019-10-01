@@ -28,6 +28,9 @@
     },
     "ios": {
       "supportsTablet": true
+    },
+    "extra": {
+      "connectionString": "https://my-json-server.typicode.com/jlambert23/luna-app"
     }
   }
 }
