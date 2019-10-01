@@ -1,28 +1,29 @@
 import React from 'react';
-import { ThemeProvider } from 'react-native-elements';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import HomeScreen from './components/Home';
-import DetailsScreen from './components/PetDetail';
-import Theme from './style/theme';
+import MainScreen from './components/Main';
+import DetailsScreen from './components/Details';
 
 const AppNavigator = createStackNavigator(
   {
-    Home: HomeScreen,
+    Main: MainScreen,
     Details: DetailsScreen,
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Main',
+    navigationOptions: {
+      title: 'Luna',
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      }
+    },
   },
 );
 
 const AppContainer = createAppContainer(AppNavigator);
-
-export default function App() {
-  return (
-    <ThemeProvider theme = {Theme}>
-      <AppContainer />
-    </ThemeProvider>
-  );
-}
+export default App = () => <AppContainer />;

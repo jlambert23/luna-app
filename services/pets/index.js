@@ -13,7 +13,8 @@ export const getPets = async () => {
       },
     });
     return await response.json();
-  } catch (error) {
+  }
+  catch (error) {
     console.error(error);
   }
 }
@@ -22,12 +23,13 @@ export const getPetById = async (id) => {
   try{
     const response = await fetch(`${api}/${id}`);
     return await response.json();
-  } catch (error) {
+  }
+  catch (error) {
     console.log(error);
   }
 }
 
-export const addPet = async (name) => {
+export const createPet = async (name) => {
   try {
     const response = await fetch(api, {
       method: 'POST',
@@ -42,7 +44,8 @@ export const addPet = async (name) => {
     });
 
     return await response.json();
-  } catch (error) {
+  }
+  catch (error) {
     console.error(error);
   }
 }
