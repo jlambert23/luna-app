@@ -16,6 +16,14 @@ export default class PetList extends Component {
       .catch(e => console.error(e));
   }
 
+  addPet(pet) {
+    if (pet) {
+      this.setState({ pets: [...this.state.pets, pet] });
+    } else {
+      console.error('Unable to add object: ' + pet);
+    }
+  }
+
   render() {
     return (
       <View>

@@ -27,16 +27,17 @@ export const getPetById = async (id) => {
   }
 }
 
-export const addPet = async (pet) => {
+export const addPet = async (name) => {
   try {
-    const response = await fetch(api + '/add', {
+    const response = await fetch(api, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        pet: pet
+        name: name,
+        last_poop: new Date(),
       }),
     });
 
