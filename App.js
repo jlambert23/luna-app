@@ -12,7 +12,7 @@ const AppNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'Main',
-    navigationOptions: {
+    defaultNavigationOptions: {
       title: 'Luna',
       headerStyle: {
         backgroundColor: '#f4511e',

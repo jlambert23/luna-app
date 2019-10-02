@@ -8,8 +8,9 @@ export default StyleSheet.create({
     color: '#fff',
   },
   overlay: {
-    windowBackgroundColor: 'rgba(255, 255, 255, .5)',
+    borderRadius: 10,
+    padding: 0,
     width: '80%',
-    height: '60%',
+    height: 'auto',
   },
 });

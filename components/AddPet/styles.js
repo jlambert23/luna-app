@@ -1,22 +1,14 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  container: {
-    // flex: 1,
-  },
   header: {
     color: '#fff',
+    textAlign: 'center',
     backgroundColor: '#f4511e',
-    margin: 0
-  },
-  input: {
-    width: 100,
-    color: 'red',
-  },
-  inputError: {
-    color: 'red',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   button: {
-    width: '100px',
+    margin: 10,
   }
 });

@@ -3,7 +3,7 @@ import Moment from 'moment';
 import { View } from 'react-native';
 import { Text } from 'react-native-elements';
 
-Details.navigationOptions = {
+const navigationOptions = {
   title: 'Details',
 };
 
@@ -19,3 +19,4 @@ export default Details = (props) => {
     </View>
   );
 }
+Details.navigationOptions = navigationOptions;

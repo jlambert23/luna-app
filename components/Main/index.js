@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Icon, ListItem, Overlay } from 'react-native-elements';
 
@@ -7,7 +7,7 @@ import AddPetComponent from '../AddPet';
 import { createPet, getPets } from '../../services/pets'
 
 
-Main.navigationOptions = ({navigation}) => {
+const navigationOptions = ({navigation}) => {
   const { params = {} } = navigation.state;
 
   return ({
@@ -21,10 +21,14 @@ export default Main = (props) => {
   [petList, setPetList] = useState([]);
 
   useEffect(() => {
-    props.navigation.setParams({ openOverlay: setIsOverlayVisible(true) });
+    props.navigation.setParams({ openOverlay: () => setIsOverlayVisible(true) });
   }, [])
 
   useEffect(() => {
+    getPetList();
+  }, [])
+
+  const getPetList = async () => {
     try {
       const pets = await getPets();
       setPetList(pets);
@@ -32,12 +36,13 @@ export default Main = (props) => {
     catch (error) {
       console.error(error);
     }
-  }, [])
+  }
 
   const addPetToList = async (petName) => {
     try {
       const pet = await createPet(petName);
       setPetList([...petList, pet]);
+      setIsOverlayVisible(false);
     }
     catch(error) {
       console.error(error);
@@ -67,3 +72,4 @@ export default Main = (props) => {
     </View>
   )
 }
+Main.navigationOptions = navigationOptions;

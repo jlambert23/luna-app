@@ -3,7 +3,6 @@ import { baseUrl } from '../../config';
 const api = baseUrl + '/pets';
 
 export const getPets = async () => {
-  console.log(api);
   try {
     const response = await fetch(api, {
       method: 'GET',
