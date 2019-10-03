@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { Icon, ListItem, Overlay } from 'react-native-elements';
+import { ListItem, Overlay } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Styles from './styles';
 import AddPetComponent from '../AddPet';
@@ -11,7 +12,7 @@ const navigationOptions = ({navigation}) => {
   const { params = {} } = navigation.state;
 
   return ({
-    headerRight: <Icon name='add' iconStyle={Styles.addIcon} onPress={() => params.openOverlay() } />,
+    headerRight: <Icon name='plus' style={Styles.addPetIcon} onPress={() => params.openOverlay() } />,
     headerRightContainerStyle: Styles.headerRight,
   })
 }
@@ -49,6 +50,13 @@ export default Main = (props) => {
     }
   }
 
+  const updatePoop = (petId) => {
+    setPetList(petList.map(p => {
+      if (p.id === petId) p.last_poop = new Date();
+      return p;
+    }));
+  }
+
   return (
     <View>  
       <Overlay
@@ -64,6 +72,13 @@ export default Main = (props) => {
             key={pet.id}
             title={pet.name}
             subtitle={pet.last_poop.toString()}
+            rightIcon={
+              <Icon
+                name='poo'
+                style={Styles.addPooIcon}
+                onPress={() => updatePoop(pet.id)}
+              />
+            }
             bottomDivider
             onPress={() => props.navigation.navigate('Details', { pet: pet })}
           />

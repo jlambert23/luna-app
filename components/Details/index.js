@@ -9,13 +9,12 @@ const navigationOptions = {
 
 export default Details = (props) => { 
   const pet = props.navigation.getParam('pet', undefined);
-  const date = pet ? Moment(pet.last_poop).format('ddd MMM Do YYYY, h:m A') : '';
 
   return (
     <View>
       <Text>Details screen</Text>
       <Text>Name: {pet.name}</Text>
-      <Text>Last poop: {date}</Text>
+      <Text>Last poop: {pet.last_poop.toString()}</Text>
     </View>
   );
 }
