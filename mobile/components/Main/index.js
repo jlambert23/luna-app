@@ -69,14 +69,14 @@ export default Main = (props) => {
       {
         petList.map((pet) => (
           <ListItem 
-            key={pet.id}
+            key={pet._id}
             title={pet.name}
             subtitle={pet.lastPoop.toString()}
             rightIcon={
               <Icon
                 name='poo'
                 style={Styles.addPooIcon}
-                onPress={() => updatePoop(pet.id)}
+                onPress={() => updatePoop(pet._id)}
               />
             }
             bottomDivider
