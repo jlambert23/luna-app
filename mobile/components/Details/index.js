@@ -14,7 +14,7 @@ export default Details = (props) => {
     <View>
       <Text>Details screen</Text>
       <Text>Name: {pet.name}</Text>
-      <Text>Last poop: {pet.last_poop.toString()}</Text>
+      <Text>Last poop: {pet.lastPoop.toString()}</Text>
     </View>
   );
 }

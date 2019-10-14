@@ -38,7 +38,7 @@ export const createPet = async (name) => {
       },
       body: JSON.stringify({
         name: name,
-        last_poop: new Date(),
+        lastPoop: new Date(),
       }),
     });
 

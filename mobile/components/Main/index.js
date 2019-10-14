@@ -52,7 +52,7 @@ export default Main = (props) => {
 
   const updatePoop = (petId) => {
     setPetList(petList.map(p => {
-      if (p.id === petId) p.last_poop = new Date();
+      if (p.id === petId) p.lastPoop = new Date();
       return p;
     }));
   }
@@ -71,7 +71,7 @@ export default Main = (props) => {
           <ListItem 
             key={pet.id}
             title={pet.name}
-            subtitle={pet.last_poop.toString()}
+            subtitle={pet.lastPoop.toString()}
             rightIcon={
               <Icon
                 name='poo'
