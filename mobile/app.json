@@ -30,7 +30,7 @@
       "supportsTablet": true
     },
     "extra": {
-      "connectionString": "https://my-json-server.typicode.com/jlambert23/luna-app"
+      "connectionString": "http://localhost:5600/api"
     }
   }
 }
