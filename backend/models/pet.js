@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const petModel = new mongoose.Schema({
-  title: { type: String },
+  name: { type: String },
   lastPoop: { type: Date }
 });
 

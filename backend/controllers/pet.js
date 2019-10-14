@@ -24,7 +24,7 @@ petRouter.use('/:petId', FindPetById);
 petRouter.route('/:petId')
   .get(({ pet }, res) => res.json(pet))
   .put(({ pet, body }, res) => {
-      pet.title = body.title;
+      pet.name = body.name;
       pet.datePooped = body.datePooped;
       pet.save();
       res.json(pet);
