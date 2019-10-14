@@ -1,6 +1,6 @@
 import { baseUrl } from '../../config';
 
-const api = baseUrl + '/pets';
+const api = baseUrl + '/pet';
 
 export const getPets = async () => {
   try {
