@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
 import { port, host, db_conn } from './config';
-import router from './controllers';
+import router from './routes';
 
 const app = express();
 
