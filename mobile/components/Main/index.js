@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Styles from './styles';
 import AddPetComponent from '../AddPet';
-import { createPet, getPets } from '../../services/pets'
+import { createPet, getPets, deletePet } from '../../services/pets'
 
 
 const navigationOptions = ({navigation}) => {
@@ -50,11 +50,13 @@ export default Main = (props) => {
     }
   }
 
-  const updatePoop = (petId) => {
-    setPetList(petList.map(p => {
-      if (p.id === petId) p.lastPoop = new Date();
-      return p;
-    }));
+  const _deletePet = async (petId) => {
+    try {
+      await deletePet(petId);
+      setPetList(petList.filter(p => p._id !== petId));
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -76,7 +78,7 @@ export default Main = (props) => {
               <Icon
                 name='poo'
                 style={Styles.addPooIcon}
-                onPress={() => updatePoop(pet._id)}
+                onPress={() => _deletePet(pet._id)}
               />
             }
             bottomDivider
