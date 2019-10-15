@@ -38,7 +38,18 @@ export const createPet = async (name) => {
     });
 
     return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
 }
+
+export const deletePet = async (id) => {
+  try {
+    const response = await fetch(`${api}/${id}`, { method: 'DELETE' });
+
+    if (response.status !== 204) {
+      throw new Error(`Unexpected response code ${response.status}.`);
+    }
   } catch (error) {
     console.error(error);
   }
