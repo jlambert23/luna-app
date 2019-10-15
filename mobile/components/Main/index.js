@@ -26,10 +26,10 @@ export default Main = (props) => {
   }, [])
 
   useEffect(() => {
-    getPetList();
+    _getPets();
   }, [])
 
-  const getPetList = async () => {
+  const _getPets = async () => {
     try {
       const pets = await getPets();
       setPetList(pets);
@@ -39,7 +39,7 @@ export default Main = (props) => {
     }
   }
 
-  const addPetToList = async (petName) => {
+  const _createPet = async (petName) => {
     try {
       const pet = await createPet(petName);
       setPetList([...petList, pet]);
@@ -64,7 +64,7 @@ export default Main = (props) => {
         overlayStyle = {Styles.overlay}
         onBackdropPress={() => setIsOverlayVisible(false)}
       >
-        <AddPetComponent addPet={addPetToList}></AddPetComponent>
+        <AddPetComponent addPet={_createPet}></AddPetComponent>
       </Overlay>
       {
         petList.map((pet) => (
