@@ -76,8 +76,8 @@ export default Main = (props) => {
             subtitle={pet.lastPoop.toString()}
             rightIcon={
               <Icon
-                name='poo'
-                style={Styles.addPooIcon}
+                name='ellipsis-h'
+                style={Styles.moreIcon}
                 onPress={() => _deletePet(pet._id)}
               />
             }

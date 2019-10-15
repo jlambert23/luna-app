@@ -8,13 +8,10 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 25,
   },
-  addPooIcon: {
+  moreIcon: {
     color: '#f4511e',
-    backgroundColor: '#fff',
-    borderRadius: 15,
     padding: 10,
-    fontSize: 25,
-    elevation: 2,
+    fontSize: 20,
   },
   overlay: {
     borderRadius: 10,
