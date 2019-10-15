@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { ListItem, Overlay } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -50,6 +50,13 @@ export default Main = (props) => {
     }
   }
 
+  const confirmDelete = (pet) => {
+    Alert.alert('Confirm Delete', `Are you sure you want to delete ${pet.name}?`, [
+      { text: 'Cancel' },
+      { text: 'OK', onPress: () => _deletePet(pet._id) }
+    ])
+  }
+
   const _deletePet = async (petId) => {
     try {
       await deletePet(petId);
@@ -78,7 +85,7 @@ export default Main = (props) => {
               <Icon
                 name='ellipsis-h'
                 style={Styles.moreIcon}
-                onPress={() => _deletePet(pet._id)}
+                onPress={() => confirmDelete(pet)}
               />
             }
             bottomDivider
