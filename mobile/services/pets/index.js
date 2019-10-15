@@ -6,24 +6,22 @@ export const getPets = async () => {
   try {
     const response = await fetch(api, {
       method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: { Accept: 'application/json' },
     });
     return await response.json();
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
   }
 }
 
 export const getPetById = async (id) => {
   try{
-    const response = await fetch(`${api}/${id}`);
+    const response = await fetch(`${api}/${id}`, {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+    });
     return await response.json();
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 }
@@ -36,15 +34,12 @@ export const createPet = async (name) => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        name: name,
-        lastPoop: new Date(),
-      }),
+      body: JSON.stringify({ name: name }),
     });
 
     return await response.json();
-  }
-  catch (error) {
+}
+  } catch (error) {
     console.error(error);
   }
 }
