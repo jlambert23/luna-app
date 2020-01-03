@@ -11,10 +11,6 @@ petRouter.route('/')
       : res.json(pets));
   })
   .post((req, res) => {
-    if (!req.body.lastPoop) {
-      req.body.lastPoop = new Date();
-    }
-    
     let pet = new Pet(req.body);
     pet.save();
     res.status(201).send(pet);

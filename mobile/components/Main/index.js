@@ -97,7 +97,11 @@ export default Main = (props) => {
           <ListItem 
             key={pet._id}
             title={pet.name}
-            subtitle={moment(pet.lastPoop).format('h:m A, ddd MMMM D')}
+            subtitle={
+              pet.lastPoop
+                ? moment(pet.lastPoop).format('h:m A, ddd MMMM D')
+                : `Tap to record ${pet.name}'s first poop 💩!`
+            }
             rightIcon={
               <Icon
                 name='trash-alt'
