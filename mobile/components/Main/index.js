@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Alert, View } from 'react-native';
 import { ListItem, Overlay } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import moment from 'moment';
 
 import Styles from './styles';
 import AddPetComponent from '../AddPet';
@@ -96,7 +97,7 @@ export default Main = (props) => {
           <ListItem 
             key={pet._id}
             title={pet.name}
-            subtitle={pet.lastPoop.toString()}
+            subtitle={moment(pet.lastPoop).format('h:m A, ddd MMMM D')}
             rightIcon={
               <Icon
                 name='trash-alt'
