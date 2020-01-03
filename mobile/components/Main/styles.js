@@ -8,7 +8,7 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 25,
   },
-  moreIcon: {
+  icon: {
     color: '#f4511e',
     padding: 10,
     fontSize: 20,

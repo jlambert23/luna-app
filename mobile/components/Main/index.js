@@ -99,8 +99,8 @@ export default Main = (props) => {
             subtitle={pet.lastPoop.toString()}
             rightIcon={
               <Icon
-                name='ellipsis-h'
-                style={Styles.moreIcon}
+                name='trash-alt'
+                style={Styles.icon}
                 onPress={() => confirmDelete(pet)}
               />
             }
