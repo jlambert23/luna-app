@@ -43,6 +43,23 @@ export const createPet = async (name) => {
   }
 }
 
+export const updatePet = async (pet) => {
+  try {
+    const response = await fetch(`${api}/${pet._id}`, { 
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(pet),
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export const deletePet = async (id) => {
   try {
     const response = await fetch(`${api}/${id}`, { method: 'DELETE' });

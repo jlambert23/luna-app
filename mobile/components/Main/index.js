@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Styles from './styles';
 import AddPetComponent from '../AddPet';
-import { createPet, getPets, deletePet } from '../../services/pets'
+import { createPet, getPets, updatePet, deletePet } from '../../services/pets'
 
 
 const navigationOptions = ({navigation}) => {
@@ -50,6 +50,22 @@ export default Main = (props) => {
     }
   }
 
+  const confirmUpdate = (pet) => {
+    Alert.alert('💩 Woo!!', `Update ${pet.name}'s last poop?`, [
+      { text: 'Nope' },
+      { text: 'Yeah', onPress: () => updateLastPoop(pet._id) }
+    ])
+  }
+
+  const updateLastPoop = async (petId) => {
+    try {
+      const pet = await updatePet({ _id: petId, lastPoop: new Date() });
+      setPetList(petList.map(p => p._id === pet._id ? pet : p));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const confirmDelete = (pet) => {
     Alert.alert('Confirm Delete', `Are you sure you want to delete ${pet.name}?`, [
       { text: 'Cancel' },
@@ -89,7 +105,8 @@ export default Main = (props) => {
               />
             }
             bottomDivider
-            onPress={() => props.navigation.navigate('Details', { pet: pet })}
+            onPress={() => confirmUpdate(pet)}
+            // onPress={() => props.navigation.navigate('Details', { pet: pet })}
           />
         ))
       }
