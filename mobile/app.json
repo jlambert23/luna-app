@@ -1,22 +1,18 @@
 {
   "expo": {
-    "name": "luna-app",
-    "slug": "localhost",
+    "name": "Luna",
+    "slug": "luna-app",
     "privacy": "public",
     "sdkVersion": "34.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
     "version": "1.0.0",
+    "platforms": [
+      "android"
+    ],
+    "android": {
+      "package": "com.jamber.luna"
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -25,9 +21,6 @@
     ],
     "packagerOpts": {
       "sourceExts": ["js", "json", "ts", "tsx", "jsx"]
-    },
-    "ios": {
-      "supportsTablet": true
     },
     "extra": {
       "connectionStrings": {
