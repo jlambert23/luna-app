@@ -25,7 +25,8 @@
     "extra": {
       "connectionStrings": {
         "local": "http://192.168.1.108:5600/api",
-        "glitch": "https://jlambert23-luna-app.glitch.me/api"
+        "glitch": "https://jlambert23-luna-app.glitch.me/api",
+        "rylo": "https://luna.rylocation.net/api"
       }
     }
   }
