@@ -99,7 +99,7 @@ export default Main = (props) => {
             title={pet.name}
             subtitle={
               pet.lastPoop
-                ? moment(pet.lastPoop).format('h:m A, ddd MMMM D')
+                ? moment(pet.lastPoop).format('h:mm A, ddd MMMM D')
                 : `Tap to record ${pet.name}'s first poop 💩!`
             }
             rightIcon={
