@@ -3,7 +3,7 @@
     "name": "Luna",
     "slug": "luna-app",
     "privacy": "public",
-    "sdkVersion": "34.0.0",
+    "sdkVersion": "35.0.0",
     "version": "1.0.1",
     "platforms": [
       "android"
@@ -20,7 +20,13 @@
       "**/*"
     ],
     "packagerOpts": {
-      "sourceExts": ["js", "json", "ts", "tsx", "jsx"]
+      "sourceExts": [
+        "js",
+        "json",
+        "ts",
+        "tsx",
+        "jsx"
+      ]
     },
     "extra": {
       "connectionStrings": {
