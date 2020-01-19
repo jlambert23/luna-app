@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import { ListItem, Overlay } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import moment from 'moment';
@@ -92,29 +92,31 @@ export default Main = (props) => {
       >
         <AddPetComponent addPet={_createPet}></AddPetComponent>
       </Overlay>
-      {
-        petList.map((pet) => (
-          <ListItem 
-            key={pet._id}
-            title={pet.name}
-            subtitle={
-              pet.lastPoop
-                ? moment(pet.lastPoop).format('h:mm A, ddd MMMM D')
-                : `Tap to record ${pet.name}'s first poop 💩!`
-            }
-            rightIcon={
-              <Icon
-                name='trash-alt'
-                style={Styles.icon}
-                onPress={() => confirmDelete(pet)}
+      <ScrollView>
+        {
+          petList.map((pet) => (
+              <ListItem 
+                key={pet._id}
+                title={pet.name}
+                subtitle={
+                  pet.lastPoop
+                    ? moment(pet.lastPoop).format('h:mm A, ddd MMMM D')
+                    : `Tap to record ${pet.name}'s first poop 💩!`
+                }
+                rightIcon={
+                  <Icon
+                    name='trash-alt'
+                    style={Styles.icon}
+                    onPress={() => confirmDelete(pet)}
+                  />
+                }
+                bottomDivider
+                onPress={() => confirmUpdate(pet)}
+                // onPress={() => props.navigation.navigate('Details', { pet: pet })}
               />
-            }
-            bottomDivider
-            onPress={() => confirmUpdate(pet)}
-            // onPress={() => props.navigation.navigate('Details', { pet: pet })}
-          />
-        ))
-      }
+          ))
+        }
+      </ScrollView>
     </View>
   )
 }
