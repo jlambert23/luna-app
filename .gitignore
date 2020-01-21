@@ -31,8 +31,7 @@ npm-debug.*
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.test
+.env.*
 
 # Visual Studio Code
 .vscode/*
