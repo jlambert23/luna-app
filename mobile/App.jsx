@@ -20,10 +20,10 @@ const AppNavigator = createStackNavigator(
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'bold',
-      }
+      },
     },
   },
 );
 
 const AppContainer = createAppContainer(AppNavigator);
-export default App = () => <AppContainer />;
+export default () => <AppContainer />;

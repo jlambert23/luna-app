@@ -1,6 +1,6 @@
 import { baseUrl } from '../../config';
 
-const api = baseUrl + '/pet';
+const api = `${baseUrl}/pet`;
 
 export const getPets = async () => {
   try {
@@ -10,23 +10,23 @@ export const getPets = async () => {
     });
     return await response.json();
   } catch (error) {
-    console.error(error);
+    return error;
   }
-}
+};
 
-export const getPetById = async (id) => {
-  try{
+export const getPetById = async id => {
+  try {
     const response = await fetch(`${api}/${id}`, {
       method: 'GET',
       headers: { Accept: 'application/json' },
     });
     return await response.json();
   } catch (error) {
-    console.log(error);
+    return error;
   }
-}
+};
 
-export const createPet = async (name) => {
+export const createPet = async name => {
   try {
     const response = await fetch(api, {
       method: 'POST',
@@ -34,21 +34,21 @@ export const createPet = async (name) => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: name }),
+      body: JSON.stringify({ name }),
     });
 
     return await response.json();
   } catch (error) {
-    console.error(error);
+    return error;
   }
-}
+};
 
-export const updatePet = async (pet) => {
+export const updatePet = async pet => {
   try {
-    const response = await fetch(`${api}/${pet._id}`, { 
+    const response = await fetch(`${api}/${pet._id}`, {
       method: 'PATCH',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(pet),
@@ -56,18 +56,20 @@ export const updatePet = async (pet) => {
 
     return await response.json();
   } catch (error) {
-    console.error(error);
+    return error;
   }
-}
+};
 
-export const deletePet = async (id) => {
+export const deletePet = async id => {
   try {
     const response = await fetch(`${api}/${id}`, { method: 'DELETE' });
 
     if (response.status !== 204) {
       throw new Error(`Unexpected response code ${response.status}.`);
     }
+
+    return await response.json();
   } catch (error) {
-    console.error(error);
+    return error;
   }
-}
+};
