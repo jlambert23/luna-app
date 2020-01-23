@@ -10,7 +10,7 @@ import AddPetComponent from '../AddPet';
 import { createPet, getPets, updatePet, deletePet } from '../../services/pets';
 
 const navigationOptions = ({ navigation }) => ({
-  headerRight: (
+  headerRight: () => (
     <Icon name="plus" style={Styles.addPetIcon} onPress={navigation.getParam('openOverlay')} />
   ),
   headerRightContainerStyle: Styles.headerRight,
