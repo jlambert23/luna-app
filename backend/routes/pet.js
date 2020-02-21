@@ -11,7 +11,7 @@ petRouter.route('/')
       : res.json(pets));
   })
   .post((req, res) => {
-    let pet = new Pet(req.body);
+    const pet = new Pet(req.body);
     pet.save();
     res.status(201).send(pet);
   });
@@ -21,7 +21,6 @@ petRouter.route('/:petId')
   .get(({ pet }, res) => res.json(pet))
   .put(({ pet, body }, res) => {
       pet.name = body.name;
-      pet.datePooped = body.datePooped;
       pet.save();
       res.json(pet);
   })
@@ -35,5 +34,19 @@ petRouter.route('/:petId')
     ? res.status(500).send(err)
     : res.status(204).send('success'))
   );
+
+petRouter.use('/:petId', FindPetById);
+petRouter.route('/:petId/poops')
+  .post(({ pet, body }, res) => {
+    if (typeof(body) !== Date) { body = new Date(); }
+    pet.poops.push(body);
+    pet.save();
+    res.json(pet);
+  })
+  .delete(({ pet }, res) => {
+    pet.poops = [];
+    pet.save();
+    res.json(pet);
+  });
 
 export default petRouter;
