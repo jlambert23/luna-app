@@ -7,6 +7,7 @@ import moment from 'moment';
 
 import Styles from './styles';
 import AddPetComponent from '../AddPet';
+import PopupMenu from '../PopupMenu';
 import { createPet, getPets, updatePet, deletePet } from '../../services/pets';
 
 const navigationOptions = ({ navigation }) => ({
@@ -81,6 +82,17 @@ const Main = ({ navigation }) => {
     ]);
   };
 
+  const makeOptions = pet => [
+    {
+      text: 'View History',
+    },
+    {
+      callback: () => confirmDelete(pet),
+      style: Styles.delete,
+      text: 'Delete',
+    },
+  ];
+
   return (
     <View>
       <Overlay
@@ -100,9 +112,7 @@ const Main = ({ navigation }) => {
                 ? moment(pet.lastPoop).format('h:mm A, ddd MMMM D')
                 : `Tap to record ${pet.name}'s first poop 💩!`
             }
-            rightIcon={
-              <Icon name="trash-alt" style={Styles.icon} onPress={() => confirmDelete(pet)} />
-            }
+            rightIcon={<PopupMenu options={makeOptions(pet)} />}
             bottomDivider
             onPress={() => confirmUpdate(pet)}
             // onPress={() => navigation.navigate('Details', { pet: pet })}
