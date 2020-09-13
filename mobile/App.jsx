@@ -3,7 +3,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import { menuProvider } from './components/PopupMenu';
-import MainScreen from './components/Main';
+import MainScreen from './components/Dashboard';
 import DetailsScreen from './components/Details';
 
 const AppNavigator = createStackNavigator(
