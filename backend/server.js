@@ -7,12 +7,13 @@ import router from './routes';
 
 const app = express();
 
-mongoose.connect(db_conn, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-})
-.then(() => console.log('db connected!'))
-.catch(err => console.log(`${err.message}`));
+mongoose
+  .connect(db_conn, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => console.log('db connected!'))
+  .catch((err) => console.log(`${err.message}`));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

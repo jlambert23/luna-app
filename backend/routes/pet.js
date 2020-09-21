@@ -4,11 +4,13 @@ import FindPetById from '../middleware/pet';
 
 const petRouter = express.Router();
 
-petRouter.route('/')
-  .get((_, res) => {    
-    Pet.find({}, (err, pets) => err
-      ? res.status(500).send(err)
-      : res.json(pets));
+petRouter
+  .route('/')
+  .get((_, res) => {
+    Pet.find({}, (err, pets) => {
+      console.log(pets);
+      return err ? res.status(500).send(err) : res.json(pets);
+    });
   })
   .post((req, res) => {
     const pet = new Pet(req.body);
@@ -17,28 +19,35 @@ petRouter.route('/')
   });
 
 petRouter.use('/:petId', FindPetById);
-petRouter.route('/:petId')
+petRouter
+  .route('/:petId')
   .get(({ pet }, res) => res.json(pet))
   .put(({ pet, body }, res) => {
-      pet.name = body.name;
-      pet.save();
-      res.json(pet);
+    pet.name = body.name;
+    pet.save();
+    res.json(pet);
   })
   .patch(({ pet, body }, res) => {
-    if(body._id) { delete body._id; }
+    if (body._id) {
+      delete body._id;
+    }
     Object.assign(pet, body);
     pet.save();
     res.json(pet);
   })
-  .delete(({ pet }, res) => pet.remove(err => err
-    ? res.status(500).send(err)
-    : res.status(204).send('success'))
+  .delete(({ pet }, res) =>
+    pet.remove((err) =>
+      err ? res.status(500).send(err) : res.status(204).send('success')
+    )
   );
 
 petRouter.use('/:petId', FindPetById);
-petRouter.route('/:petId/poops')
+petRouter
+  .route('/:petId/poops')
   .post(({ pet, body }, res) => {
-    if (typeof(body) !== Date) { body = new Date(); }
+    if (typeof body !== Date) {
+      body = new Date();
+    }
     pet.poops.push(body);
     pet.save();
     res.json(pet);
