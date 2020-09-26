@@ -73,3 +73,12 @@ export const deletePet = async id => {
     return error;
   }
 };
+
+export const addNewPoop = async id => {
+  try {
+    const response = await fetch(`${api}/${id}/poops`, { method: 'POST' });
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
+};

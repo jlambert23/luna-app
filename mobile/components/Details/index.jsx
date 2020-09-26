@@ -1,6 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Text } from 'react-native-elements';
+import { ScrollView, Text } from 'react-native';
+import { ListItem } from 'react-native-elements';
+
+import moment from 'moment';
 import PropTypes from 'prop-types';
 
 const navigationOptions = {
@@ -8,21 +10,20 @@ const navigationOptions = {
 };
 
 const Details = ({ navigation }) => {
-  const pet = navigation.getParam('pet', undefined);
+  const pet = navigation.getParam('pet');
+  const poops = [...pet.poops].reverse();
 
-  return (
-    <View>
-      <Text>Details screen</Text>
-      <Text>
-        Name:
-        {pet.name}
-      </Text>
-      <Text>
-        Last poop:
-        {pet.lastPoop.toString()}
-      </Text>
-    </View>
-  );
+  if (poops && poops.length) {
+    return (
+      <ScrollView>
+        {poops.map(poop => (
+          <ListItem key={poop} title={moment(poop).format('h:mm A, ddd MMMM D')} bottomDivider />
+        ))}
+      </ScrollView>
+    );
+  }
+
+  return <Text>And no poops were found on that day...</Text>;
 };
 Details.navigationOptions = navigationOptions;
 

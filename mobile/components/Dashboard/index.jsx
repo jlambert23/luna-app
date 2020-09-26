@@ -8,7 +8,7 @@ import moment from 'moment';
 import Styles from './styles';
 import AddPetComponent from '../AddPet';
 import PopupMenu from '../PopupMenu';
-import { createPet, getPets, updatePet, deletePet } from '../../services/pets';
+import { addNewPoop, createPet, getPets, deletePet } from '../../services/pets';
 
 const navigationOptions = ({ navigation }) => ({
   headerRight: () => (
@@ -61,7 +61,7 @@ const Main = ({ navigation }) => {
 
   const updateLastPoop = async petId => {
     try {
-      const pet = await updatePet({ _id: petId, lastPoop: new Date() });
+      const pet = await addNewPoop(petId);
       setPetList(petList.map(p => (p._id === pet._id ? pet : p)));
     } catch (error) {
       console.error(error);
@@ -84,6 +84,7 @@ const Main = ({ navigation }) => {
 
   const makeOptions = pet => [
     {
+      callback: () => navigation.navigate('Details', { pet }),
       text: 'View History',
     },
     {
@@ -92,6 +93,14 @@ const Main = ({ navigation }) => {
       text: 'Delete',
     },
   ];
+
+  const getSubtitle = pet => {
+    if (pet.poops && pet.poops.length) {
+      const lastPoop = pet.poops.slice(-1)[0];
+      return moment(lastPoop).format('h:mm A, ddd MMMM D');
+    }
+    return `Tap to record ${pet.name}'s first poop 💩!`;
+  };
 
   return (
     <View>
@@ -107,15 +116,12 @@ const Main = ({ navigation }) => {
           <ListItem
             key={pet._id}
             title={pet.name}
-            subtitle={
-              pet.lastPoop
-                ? moment(pet.lastPoop).format('h:mm A, ddd MMMM D')
-                : `Tap to record ${pet.name}'s first poop 💩!`
-            }
+            subtitle={getSubtitle(pet)}
             rightIcon={<PopupMenu options={makeOptions(pet)} />}
             bottomDivider
             onPress={() => confirmUpdate(pet)}
-            // onPress={() => navigation.navigate('Details', { pet: pet })}
+            onLongPress={() => navigation.navigate('Details', { pet })}
+            delayLongPress={500}
           />
         ))}
       </ScrollView>
@@ -128,6 +134,7 @@ Main.propTypes = {
   navigation: PropTypes.shape({
     setParams: PropTypes.func.isRequired,
     getParam: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
 
