@@ -121,7 +121,7 @@ const Main = ({ navigation }) => {
             bottomDivider
             onPress={() => confirmUpdate(pet)}
             onLongPress={() => navigation.navigate('Details', { pet })}
-            delayLongPress={500}
+            delayLongPress={1000}
           />
         ))}
       </ScrollView>
