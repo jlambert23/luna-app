@@ -13,7 +13,7 @@ mongoose
     useNewUrlParser: true,
   })
   .then(() => console.log('db connected!'))
-  .catch((err) => console.log(`${err.message}`));
+  .catch((err) => console.log(`db errored: ${err.message}`));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
